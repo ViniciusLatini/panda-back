@@ -1,7 +1,5 @@
 export interface UserAuth {
   token: string;
-  user: {
-    id: number;
-    username: string;
-  }
+  id: number;
+  username: string;
 }

@@ -34,9 +34,7 @@ export async function authUserService(data: Omit<User, "id">): Promise<UserAuth>
 
   return {
     token,
-    user: {
-      id: user.id,
-      username: user.username,
-    },
+    id: user.id,
+    username: user.username,
   }
 }

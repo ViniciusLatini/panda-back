@@ -25,6 +25,10 @@ export async function auth(req: Request, res: Response): Promise<void> {
     const users = await authUserService(req.body);
     res.status(200).json(users);
   } catch (error: any) {
+    if (error.message === "Invalid credentials") {
+      res.status(401).json({ error: error.message });
+      return;
+    }
     res.status(500).json({ error: error.message });
   }
 }

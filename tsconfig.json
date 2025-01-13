@@ -1,9 +1,16 @@
 {
   "compilerOptions": {
     "sourceMap": true,
+    "rootDir": "./src",
     "outDir": "dist",
+    "module": "CommonJS",
+    "moduleResolution":"node",
+    "target": "ES2020",
     "strict": true,
     "lib": ["esnext"],
-    "esModuleInterop": true
-  }
+    "esModuleInterop": true,
+    "skipLibCheck": true 
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }

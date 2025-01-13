@@ -1,7 +1,7 @@
 import app from './app';
 import prisma from './utils/prismaClient';
 
-const PORT = 3333;
+const PORT = 3000;
 
 const startServer = async () => {
   try {

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { createUserService, getAllUsersService } from '../services/userService';
+import { authUserService, createUserService, getAllUsersService } from '../services/userService';
 
 
 export async function createUser(req: Request, res: Response): Promise<void> {
@@ -14,6 +14,15 @@ export async function createUser(req: Request, res: Response): Promise<void> {
 export async function getAllUsers(req: Request, res: Response): Promise<void> {
   try {
     const users = await getAllUsersService();
+    res.status(200).json(users);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+}
+
+export async function auth(req: Request, res: Response): Promise<void> {
+  try {
+    const users = await authUserService(req.body);
     res.status(200).json(users);
   } catch (error: any) {
     res.status(500).json({ error: error.message });

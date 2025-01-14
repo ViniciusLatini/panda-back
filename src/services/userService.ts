@@ -10,8 +10,8 @@ function generateToken(userId: number): string {
 }
 
 export async function createUserService(data: Omit<User, "id">): Promise<User> {
-  if (!data.username || !data.password) {
-    throw new Error("Username and password are required");
+  if (!data.email || !data.password) {
+    throw new Error("email and password are required");
   }
   const hashedPassword = await bcrypt.hash(data.password, 10);
 
@@ -22,11 +22,13 @@ export async function getAllUsersService(): Promise<User[]> {
   return await getAllUsers();
 }
 
-export async function authUserService(data: Omit<User, "id">): Promise<UserAuth> {
-  if (!data.username || !data.password) {
-    throw new Error("Username and password are required");
+export async function authUserService(
+  data: Omit<User, "id">
+): Promise<UserAuth> {
+  if (!data.email || !data.password) {
+    throw new Error("email and password are required");
   }
-  const user = await findUser(data.username, data.password);
+  const user = await findUser(data.email, data.password);
 
   if (!user) throw new Error("Invalid credentials");
 
@@ -35,6 +37,6 @@ export async function authUserService(data: Omit<User, "id">): Promise<UserAuth>
   return {
     token,
     id: user.id,
-    username: user.username,
-  }
+    email: user.email,
+  };
 }

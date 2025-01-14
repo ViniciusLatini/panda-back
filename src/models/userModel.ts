@@ -11,10 +11,10 @@ export async function getAllUsers(): Promise<User[]> {
 }
 
 export async function findUser(
-  username: string,
+  email: string,
   password: string
 ): Promise<User | null> {
-  const user = await prisma.user.findUnique({ where: { username } });
+  const user = await prisma.user.findUnique({ where: { email } });
   if (!user) return null;
 
   const isPasswordValid = await bcrypt.compare(password, user.password);

@@ -1,13 +1,18 @@
-import { Request, Response } from 'express';
-import { authUserService, createUserService, getAllUsersService } from '../services/userService';
-
+import { Request, Response } from "express";
+import {
+  authUserService,
+  createUserService,
+  getAllUsersService,
+} from "../services/userService";
 
 export async function createUser(req: Request, res: Response): Promise<void> {
   try {
     const user = await createUserService(req.body);
     res.status(201).json(user);
   } catch (error: any) {
-    res.status(400).json({ error: error.message });
+    if (error.code === "P2002")
+      res.status(409).json({ error: "Email already exists" });
+    else res.status(400).json({ error: error.message });
   }
 }
 

@@ -95,7 +95,7 @@ Você pode acessar a API do servidor usando os seguintes endpoints:
       "library_id": "string",
       "live_id": "string | null",
       "video_external_id": "string",
-      "converted_at"?: "string",
+      "converted_at": "string",
       "created_at": "string",
       "updated_at": "string",
       "storage_size": "number",

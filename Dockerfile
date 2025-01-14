@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:20.1.0-alpine
 
 WORKDIR /usr/src/app
 
@@ -8,6 +8,8 @@ COPY prisma ./prisma/
 RUN npm install
 
 COPY . .
+
+RUN npx prisma generate
 
 RUN npm run build
 

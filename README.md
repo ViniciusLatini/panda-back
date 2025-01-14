@@ -46,7 +46,7 @@ Você pode acessar a API do servidor usando os seguintes endpoints:
   - Retorno
     ```json
     {
-      "status": string
+      "status": "string"
     }
     ```
 - `/videos`: Busca todos os vídeos de um usúario a partir da sua panda API key
@@ -54,7 +54,7 @@ Você pode acessar a API do servidor usando os seguintes endpoints:
     ```json
     {
       "video": {
-        "id:" "string",
+        "id": "string",
         "title": "string",
         "description": "string",
         "status": "string",
@@ -63,7 +63,7 @@ Você pode acessar a API do servidor usando os seguintes endpoints:
         "library_id": "string",
         "live_id": "string | null",
         "video_external_id": "string",
-        "converted_at"?: "string",
+        "converted_at": "string",
         "created_at": "string",
         "updated_at": "string",
         "storage_size": "number",
@@ -86,7 +86,7 @@ Você pode acessar a API do servidor usando os seguintes endpoints:
   - Retorno
     ```json
     {
-      "id:"" string",
+      "id": "string",
       "title": "string",
       "description": "string",
       "status": "string",
@@ -125,9 +125,9 @@ Você pode acessar a API do servidor usando os seguintes endpoints:
   - Retorno:
     ```json
     {
-      "token": string,
-      "id": number,
-      "email": string
+      "token": "string",
+      "id": "number",
+      "email": "string"
     }
     ```
 

@@ -1,6 +1,16 @@
 import { VideosApi } from "../types/video";
+const Redis = require("ioredis");
+const redis = new Redis();
+
+const CACHE_EXPIRATION = 20;
 
 export async function getAllUserVideosService(): Promise<VideosApi> {
+  const cacheKey = "list-videos";
+  const cachedData = await redis.get(cacheKey);
+  if (cachedData) {
+    return JSON.parse(cachedData);
+  }
+
   const pandaKey = process.env.PANDA_KEY as string;
   const res = await fetch("https://api-v2.pandavideo.com.br/videos//", {
     method: "GET",
@@ -9,13 +19,16 @@ export async function getAllUserVideosService(): Promise<VideosApi> {
       Authorization: pandaKey,
     },
   })
-    .then((res) => res.json())
     .then((res) => {
+      return res.json();
+    })
+    .then(async(res) => {
+      await redis.set(cacheKey, JSON.stringify(res), "EX", CACHE_EXPIRATION);
       return res;
     })
     .catch((err) => console.error(err));
 
-    return res;
+  return res;
 }
 
 export async function getVideoByIdService(id: string): Promise<VideosApi> {
@@ -33,5 +46,5 @@ export async function getVideoByIdService(id: string): Promise<VideosApi> {
     })
     .catch((err) => console.error(err));
 
-    return res;
+  return res;
 }

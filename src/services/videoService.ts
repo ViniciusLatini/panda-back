@@ -1,6 +1,5 @@
 import { VideoInfo, VideosApi } from "../types/video";
-const Redis = require("ioredis");
-const redis = new Redis();
+import { redis } from "../utils/redis";
 
 const CACHE_EXPIRATION = 20;
 

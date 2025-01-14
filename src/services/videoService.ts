@@ -17,3 +17,21 @@ export async function getAllUserVideosService(): Promise<VideosApi> {
 
     return res;
 }
+
+export async function getVideoByIdService(id: string): Promise<VideosApi> {
+  const pandaKey = process.env.PANDA_KEY as string;
+  const res = await fetch(`https://api-v2.pandavideo.com.br/videos/${id}`, {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: pandaKey,
+    },
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => console.error(err));
+
+    return res;
+}

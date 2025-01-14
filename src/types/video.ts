@@ -29,3 +29,8 @@ export interface VideosApi {
   pages: number;
   total: number;
 }
+
+export interface VideoInfo {
+  title: string;
+  description: string;
+}

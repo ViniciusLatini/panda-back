@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { getAllUserVideosService, getVideoByIdService } from '../services/videoService';
+import { editInfoVideoService, getAllUserVideosService, getVideoByIdService } from '../services/videoService';
 
 export async function getVideosByUser(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
@@ -14,6 +14,16 @@ export async function getVideoById(req: Request, res: Response, next: NextFuncti
   try {
     const { id } = req.params;
     const video = await getVideoByIdService(id);
+    res.status(200).json(video);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+}
+
+export async function editVideoInfo(req: Request, res: Response, next: NextFunction) {
+  try {
+    const { id } = req.params;
+    const video = await editInfoVideoService(id, req.body);
     res.status(200).json(video);
   } catch (error: any) {
     res.status(500).json({ error: error.message });

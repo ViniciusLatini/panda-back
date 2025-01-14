@@ -1,9 +1,9 @@
-import app from './app';
+import { Application } from 'express';
 import prisma from './utils/prismaClient';
 
 const PORT = 3000;
 
-const startServer = async () => {
+export async function startServer(app: Application) {
   try {
     await prisma.$connect();
     console.log('Connected to the database');
@@ -13,5 +13,3 @@ const startServer = async () => {
     process.exit(1);
   }
 };
-
-startServer();

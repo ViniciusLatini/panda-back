@@ -2,16 +2,20 @@
   "name": "express",
   "version": "1.0.0",
   "license": "MIT",
+  "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch src --ext ts --exec ts-node src/server.ts",
-    "start": "node dist/server.js",
+    "dev": "nodemon --watch src --ext ts --exec ts-node src/index.ts",
+    "prisma:start": "npx prisma db push",
+    "start": "npm run prisma:start && node dist/index.js",
     "build": "tsc"
   },
   "dependencies": {
     "@prisma/client": "5.22.0",
     "@types/bcrypt": "^5.0.2",
     "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
     "express": "4.21.2",
+    "ioredis": "^5.4.2",
     "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {

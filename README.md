@@ -20,7 +20,7 @@ Este projeto é um desafio técnico que consiste na criação de uma API com Nod
 
 ### 1. Configure a chave da API panda
 
-De acordo com o arquivo `.env-example` insira sua chave API da sua conta Panda Vídeo. Por motivos de segurança essa chave não é salva no banco de dados ao criar uma conta na aplicação.
+Insira sua chave API da sua conta Panda Vídeo como variável de ambiente em um `.env`. Por motivos de segurança essa chave não é salva no banco de dados ao criar uma conta na aplicação.
 
 Exemplo:
 

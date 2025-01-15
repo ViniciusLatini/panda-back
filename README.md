@@ -36,6 +36,8 @@ Digite o seguinte comando para executar a API e subir o Docker:
 docker-compose up --build
 ```
 
+Por padrão a API irá subir em localhost:3000
+
 ## Utilizando a API 🌐
 
 Você pode acessar a API do servidor usando os seguintes endpoints:
